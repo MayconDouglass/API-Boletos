@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Reliese\Coders\CodersServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         /*
          * Application Service Providers...
