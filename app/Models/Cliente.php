@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $ativo
  * @property int $status
  * 
- * @property Collection|Clifinanceiro[] $clifinanceiros
+ * @property Collection|Cliempresa[] $cliempresas
  * @property Collection|Contrato[] $contratos
  * @property Collection|Financeiro[] $financeiros
  *
@@ -51,9 +51,9 @@ class Cliente extends Model
 		'status'
 	];
 
-	public function clifinanceiros()
+	public function cliempresas()
 	{
-		return $this->hasMany(Clifinanceiro::class, 'cliente');
+		return $this->hasMany(Cliempresa::class, 'cliente');
 	}
 
 	public function contratos()

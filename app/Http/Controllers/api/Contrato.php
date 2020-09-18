@@ -10,7 +10,7 @@ class Contrato extends Controller
     
     public function index()
     {
-        Contrato
+        
     }
 
     public function store(Request $request)

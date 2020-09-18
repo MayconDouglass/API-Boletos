@@ -7,7 +7,6 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -32,7 +31,6 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property Empresa $empresa
  * @property Cliente $cliente
- * @property Collection|Clifinanceiro[] $clifinanceiros
  *
  * @package App\Models
  */
@@ -85,10 +83,5 @@ class Financeiro extends Model
 	public function cliente()
 	{
 		return $this->belongsTo(Cliente::class, 'cli_cod');
-	}
-
-	public function clifinanceiros()
-	{
-		return $this->hasMany(Clifinanceiro::class, 'financeiro');
 	}
 }

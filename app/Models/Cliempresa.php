@@ -9,7 +9,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Clifinanceiro
+ * Class Cliempresa
  * 
  * @property int $id
  * @property int $cliente
@@ -18,9 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Clifinanceiro extends Model
+class Cliempresa extends Model
 {
-	protected $table = 'clifinanceiro';
+	protected $table = 'cliempresas';
 	public $timestamps = false;
 
 	protected $casts = [

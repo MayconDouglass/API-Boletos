@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $data_alt
  * @property int $status
  * 
+ * @property Collection|Cliempresa[] $cliempresas
  * @property Collection|Financeiro[] $financeiros
  *
  * @package App\Models
@@ -51,6 +52,11 @@ class Empresa extends Model
 		'data_alt',
 		'status'
 	];
+
+	public function cliempresas()
+	{
+		return $this->hasMany(Cliempresa::class, 'empresa');
+	}
 
 	public function financeiros()
 	{

@@ -73,7 +73,7 @@
 
             <a href="{{ url('/home') }}">Home</a>
 
-            <a href="{{ route('logout') }}">Sair</a>
+            <a href="{{  url('api/auth/logout') }}">Sair</a>
 
         </div>
 
@@ -103,6 +103,25 @@
         type: 'get',
         dataType: 'json',
         url: '/api/clientes/',
+        headers: {
+            'Authorization': 'Bearer' +token
+        },
+
+        success: function (result) {
+            console.log(result);
+
+        },
+        error: function (resultError) {
+
+            console.log('Erro na consulta');
+
+        }
+
+    });
+    $.ajax({
+        type: 'post',
+        dataType: 'json',
+        url: '/api/clientes/cgc/'+ '117.999.047-17',
         headers: {
             'Authorization': 'Bearer' +token
         },
