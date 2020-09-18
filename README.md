@@ -36,5 +36,5 @@
 
 
 Instrução:
-        -> Passar no header da requisição: </br>
+        <p>-> Passar no header da requisição:</p>
         <b>Authorization: Bearer + TOKEN</b>
