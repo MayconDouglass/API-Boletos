@@ -3,6 +3,9 @@
          Instrução:
          Passar no header da requisição:
          Authorization: Bearer + TOKEN
+        -------------- // --------------
+        ------Autenticação via JWT------
+        -------------- // --------------
 
 ## Rotas: </br>
 
