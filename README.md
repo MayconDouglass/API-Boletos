@@ -1,11 +1,13 @@
 ## API SIG 2000 - Boletos
 
+        --------------------------------
+              Autenticação via JWT
+        --------------------------------
+        
          Instrução:
          Passar no header da requisição:
          Authorization: Bearer + TOKEN
-        -------------- // --------------
-        ------Autenticação via JWT------
-        -------------- // --------------
+         
 
 ## Rotas: </br>
 
