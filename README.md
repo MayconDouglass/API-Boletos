@@ -1,31 +1,28 @@
 ## API SIG 2000 - Boletos
 
-Rotas:
- -> Post:
+## Rotas: </br>
 
+ -> Post:
     api/auth/login -> Enviar CGC // PASSWORD;
     api/auth/me -> Retorna quem esta logado;
     api/auth/logout -> Fazer o logout;
     api/auth/refresh -> Gera um novo token;
     
-    Insert:
 
+    Insert:
     api/clientes/i/ -> Cadastro de Cliente;
     api/emp/i/ -> Cadastro de Empresa;
     api/financeiro/i/ -> Cadastro de Boletos;
     api/contrato/i/ -> Cadastro de Contrato;
 
     Update:
-
     api/clientes/{id}/u/ -> Atualizar Cliente;
     
     Delete:
-
     api/clientes/d/{id} -> Deletar Cliente;
 
 
  -> Get:
-
     api/clientes -> Retorna lista de todos os clientes com seus respectivos boletos e contratos;
     api/clientes/{id} -> Retorna o cliente com seus respectivos boletos e contratos (pelo ID);
     api/clientes/cgc/{cgc} -> Retorna o cliente com seus respectivos boletos e contratos (pelo CGC);
@@ -39,5 +36,5 @@ Rotas:
 
 
 Instrução:
-1 - Passar no header da requisição: 
-     Authorization: Bearer <token>
+        -> Passar no header da requisição: </br>
+        <b>Authorization: Bearer + TOKEN</b>
