@@ -6,7 +6,7 @@
 
 ## Rotas: </br>
 
- -> 
+
     Post:
     api/auth/login -> Enviar CGC // PASSWORD;
     api/auth/me -> Retorna quem esta logado;
@@ -27,7 +27,6 @@
     api/clientes/d/{id} -> Deletar Cliente;
 
 
- -> 
  
     Get:
     api/clientes -> Retorna lista de todos os clientes com seus respectivos boletos e contratos;
