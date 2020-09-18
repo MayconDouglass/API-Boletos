@@ -48,7 +48,12 @@ class ClienteAPI extends Controller
     public function store(Request $request)
     {
         $cliente = new Cliente;
-        $cliente->save($request->all());  
+        $statusSave = $cliente->save($request->all());  
+
+        if($statusSave){
+            $cliente = new Cliente;   
+        }
+        
     }
 
    
