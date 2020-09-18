@@ -1,8 +1,8 @@
 ## API SIG 2000 - Boletos
 
-        Instrução:
-        <p>-> Passar no header da requisição:</p>
-        <b>Authorization: Bearer + TOKEN</b>
+         Instrução:
+         Passar no header da requisição:
+         Authorization: Bearer + TOKEN
 
 ## Rotas: </br>
 
