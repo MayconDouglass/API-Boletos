@@ -1,0 +1,334 @@
+/* CSS tabelas */
+.actionDataTab {
+    width: 255px;
+    text-align: center;
+}
+
+.statusDataTab {
+    width: 30px;
+    text-align: center;
+}
+
+.idDataTab {
+    width: 66px;
+    text-align: center;
+}
+
+.idDataTabText {
+    width: 66px;
+    text-align: center;
+}
+
+/* badge */
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+/* CSS Button*/
+.btn-alterar {
+    color: #fff;
+    background-color: #5a06e0;
+    border-color: #4f0cbb;
+    box-shadow: none
+}
+
+.btn-alterar:hover {
+    color: #fff;
+    background-color: #4f0cbb;
+    border-color: #5a06e0
+}
+
+.btn-alterar.focus,
+.btn-alterar:focus {
+    box-shadow: none, 0 0 0 0 rgba(121, 38, 255, 0.5)
+}
+
+.btn-alterar.disabled,
+.btn-alterar:disabled {
+    color: #fff;
+    background-color: #7700ff;
+    border-color: #7700ff
+}
+
+.btn-alterar:not(:disabled):not(.disabled).active,
+.btn-alterar:not(:disabled):not(.disabled):active,
+.show>.btn-alterar.dropdown-toggle {
+    color: #fff;
+    background-color: #7000cc;
+    border-color: #6900bf
+}
+
+.btn-alterar:not(:disabled):not(.disabled).active:focus,
+.btn-alterar:not(:disabled):not(.disabled):active:focus,
+.show>.btn-alterar.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0 rgba(139, 38, 255, 0.5)
+}
+
+.btn-permissao {
+    color: #fff;
+    background-color: #078857ec;
+    border-color: #035f3cec;
+    box-shadow: none
+}
+
+.btn-permissao:hover {
+    color: #fff;
+    background-color: #035f3cec;
+    border-color: #078857ec
+}
+
+.btn-permissao.focus,
+.btn-permissao:focus {
+    box-shadow: none, 0 0 0 0 #078857ec
+}
+
+.btn-permissao.disabled,
+.btn-permissao:disabled {
+    color: #fff;
+    background-color: #013a24ec;
+    border-color: #078857ec
+}
+
+.btn-permissao:not(:disabled):not(.disabled).active,
+.btn-permissao:not(:disabled):not(.disabled):active,
+.show>.btn-permissao.dropdown-toggle {
+    color: #fff;
+    background-color: #013a24ec;
+    border-color: #078857ec
+}
+
+.btn-permissao:not(:disabled):not(.disabled).active:focus,
+.btn-permissao:not(:disabled):not(.disabled):active:focus,
+.show>.btn-permissao.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0 #078857ec
+}
+
+/* modal */
+
+
+.imgCad {
+    width: 120px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px #3b4652;
+    border: 1px solid #dbdbdb;
+}
+
+.imgUser {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px #3b4652;
+    border: 2px solid #035cc2;
+}
+
+.fileinput {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add_modalHeader {
+    background-color: #009650;
+    color: #fff;
+}
+
+.alt_modalHeader {
+    background-color: #4308a1;
+    color: #fff;
+}
+
+.view_modalHeader {
+    background-color: #0841bd;
+    color: #fff;
+}
+
+.delete_modalHeader {
+    background-color: #bd0811;
+    color: #fff;
+}
+
+.permissao_modalHeader {
+    background-color: #035f3cec;
+    color: #fff;
+}
+
+.password_modalHeader {
+    background-color: #17a2b8;
+    color: rgb(255, 255, 255);
+}
+
+.user_text_painel {
+    color: #035cc2;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.user_text_painel {
+    color: #035cc2;
+}
+
+.rounded-circle,
+.app-sidebar__user-avatar {
+    border-radius: 50% !important;
+}
+
+.rounded-circle,
+.app-sidebar__user-avatarBT {
+    border-radius: 25% !important;
+}
+
+.app-sidebar__user {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Tamanho avatar barra lateral */
+.app-sidebar__user-avatar {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 20px #3b4652;
+    border: 2px solid #035cc2;
+}
+
+.app-sidebar__user-name {
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+.app-sidebar__user-name,
+.app-sidebar__user-designation {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+}
+
+.status {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+/* custom css elementos */
+
+.custom-switch-b {
+    padding-left: 2.25rem
+}
+
+.custom-switch-b .custom-control-label::before {
+    left: -2.25rem;
+    width: 1.75rem;
+    pointer-events: all;
+    border-radius: .5rem
+}
+
+.custom-switch-b .custom-control-label::after {
+    top: calc(.25rem + 2px);
+    left: calc(-2.25rem + 2px);
+    width: calc(1rem - 4px);
+    height: calc(1rem - 4px);
+    background-color: #035f3cec;
+    border-radius: .5rem;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-transform .15s ease-in-out;
+    transition: transform .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: transform .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-transform .15s ease-in-out
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .custom-switch-b .custom-control-label::after {
+        transition: none
+    }
+}
+
+.custom-switch-b .custom-control-input:checked~.custom-control-label::after {
+    background-color: #035f3cec;
+    -webkit-transform: translateX(.75rem);
+    transform: translateX(.75rem)
+}
+
+.custom-switch-b .custom-control-input:disabled:checked~.custom-control-label::before {
+    background-color: #035f3cec
+}
+
+/* Financeiro */
+.vencido {
+    color: red;
+    text-align: center;
+}
+
+.dentro-do-prazo {
+    color: green;
+    text-align: center;
+}
+
+.vencToday {
+    color: rgb(212, 212, 18);
+    text-align: center;
+}
+
+.textSimples {
+    text-align: center;
+    color: rgb(26, 26, 27);
+}
+
+/*nota fiscal - status*/
+.status-1 {
+    color: rgb(7, 112, 250);
+    font-weight: bolder;
+}
+
+.status-2 {
+    font-weight: bolder;
+}
+
+.status-3 {
+    color: rgb(250, 84, 7);
+    font-weight: bolder;
+}
+
+.status-4 {
+    color: rgb(143, 121, 0);
+    font-weight: bolder;
+}
+
+.status-5 {
+    color: rgb(33, 143, 0);
+    font-weight: bolder;
+}
+
+.status-6 {
+    color: rgb(212, 4, 4);
+    font-weight: bolder;
+}
+
+.status-7 {
+    color: rgb(116, 21, 194);
+    font-weight: bolder;
+}
