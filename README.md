@@ -6,7 +6,7 @@
 
          Instrução:
          Passar no header da requisição:
-         Authorization: Bearer + TOKEN a
+         Authorization: Bearer + TOKEN
          
 
 ## Rotas: </br>
