@@ -3,10 +3,10 @@
         --------------------------------
               Autenticação via JWT
         --------------------------------
-        
+
          Instrução:
          Passar no header da requisição:
-         Authorization: Bearer + TOKEN
+         Authorization: Bearer + TOKEN a
          
 
 ## Rotas: </br>
