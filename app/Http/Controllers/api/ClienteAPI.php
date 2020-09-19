@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cliempresa;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Empresa;
 
 class ClienteAPI extends Controller
 {
@@ -30,7 +31,7 @@ class ClienteAPI extends Controller
         if(!$cliente)
             return response()->json(['code'=>'404','erro'=>'Nenhum cliente com esse ID.'], 404);
 
-        return $cliente;
+        return response()->json($cliente,200);
     }
 
     
@@ -41,17 +42,47 @@ class ClienteAPI extends Controller
         if(!$cliente)
             return response()->json(['code'=>'404','erro'=>'Nenhum cliente com esse ID.'], 404);
 
-        return $cliente;
+        return response()->json($cliente,200);
     }
 
     
     public function store(Request $request)
     {
-        $cliente = new Cliente;
-        $statusSave = $cliente->save($request->all());  
+        $cli = Cliente::where('cgc',$request->cgc)->pluck('id_cliente');
+        $empresa = Empresa::where('auth_rest',$request->auth_rest)->pluck('id_empresa');
+      
+        if(count($cli) > 0){
+            $cliEmp = new Cliempresa;  
+            $cliEmp->cliente = $cli[0];
+            $cliEmp->empresa = $empresa[0];
+            $statusCliEmp = $cliEmp->save(); 
+            if($statusCliEmp){
+                return response()->json(['code'=>'200','Response'=>'Salvo com sucesso'], 200);
+            }else{
+                return response()->json(['code'=>'400','Response'=>'Bad Request'], 400);
+            }
+        }else{
 
-        if($statusSave){
-            $cliente = new Cliente;   
+            $cliente = new Cliente;
+            $cliente->nome = $request->nome;
+            $cliente->cgc = $request->cgc;
+            $cliente->password = $request->password;
+            $cliente->ativo = $request->ativo;
+            $cliente->status = $request->status;
+            $statusCli = $cliente->save();  
+
+            if($statusCli){
+                $cliEmp = new Cliempresa;  
+                $cliEmp->cliente = $cliente->id_cliente;
+                $cliEmp->empresa = $empresa[0];
+                $statusCliEmp = $cliEmp->save(); 
+                
+                if($statusCliEmp){
+                    return response()->json(['code'=>'200','Response'=>'Salvo com sucesso'], 200);
+                }else{
+                    return response()->json(['code'=>'400','Response'=>'Bad Request'], 400);
+                }
+            }
         }
         
     }
@@ -59,12 +90,29 @@ class ClienteAPI extends Controller
    
     public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        if(!$cliente)
+        return response()->json(['code'=>'404','erro'=>'Nenhum cliente com esse ID.'], 404);
+
+        $statusCli = $cliente->update($request->all());  
+
+        if($statusCli){
+            return response()->json(['code'=>'200','Response'=>'Atualizado com sucesso'], 200);
+        }else{
+            return response()->json(['code'=>'401','Response'=>'Bad Request'], 401);
+        }
     }
 
    
     public function destroy($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $statusDel = $cliente->delete();
+
+        if($statusDel){
+            return response()->json(['code'=>'200','Response'=>'Cliente apagado com sucesso'], 200);
+        }else{
+            return response()->json(['code'=>'401','Response'=>'Bad Request'], 401);
+        }
     }
 }

@@ -18,8 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $razao_social
  * @property string $emp_cgc
  * @property string $emp_tel
+ * @property string $auth_rest
  * @property Carbon $data_cad
- * @property Carbon $data_alt
+ * @property Carbon|null $data_alt
  * @property int $status
  * 
  * @property Collection|Cliempresa[] $cliempresas
@@ -48,6 +49,7 @@ class Empresa extends Model
 		'razao_social',
 		'emp_cgc',
 		'emp_tel',
+		'auth_rest',
 		'data_cad',
 		'data_alt',
 		'status'

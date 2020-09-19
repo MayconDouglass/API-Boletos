@@ -91,6 +91,7 @@
                 <a href="https://forge.laravel.com">Forge</a>
                 <a href="https://github.com/laravel/laravel">GitHub</a>
             </div>
+
         </div>
     </div>
 </body>
@@ -121,7 +122,7 @@
     $.ajax({
         type: 'post',
         dataType: 'json',
-        url: '/api/clientes',
+        url: '/api/clientes/emp/e959088c6049f1104c84c9bde5560a13',
         headers: {
             'Authorization': 'Bearer' +token
         },
