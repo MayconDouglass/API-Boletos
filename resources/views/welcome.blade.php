@@ -99,13 +99,14 @@
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script>
     var token = getCookie('sig2000');
-         console.log(token);
+    var token2 = getCookie('sig2000teste');
+         console.log(token2);
     $.ajax({
         type: 'get',
         dataType: 'json',
-        url: '/api/clientes/',
+        url: '/api/empresas/rest/generator/117.999.047-17',
         headers: {
-            'Authorization': 'Bearer' +token
+            'Authorization': 'Bearer' +token2
         },
 
         success: function (result) {
@@ -120,11 +121,11 @@
 
     });
     $.ajax({
-        type: 'post',
+        type: 'get',
         dataType: 'json',
-        url: '/api/clientes/emp/e959088c6049f1104c84c9bde5560a13',
+        url: '/api/empresas/contratos/',
         headers: {
-            'Authorization': 'Bearer' +token
+            'Authorization': 'Bearer' +token2 
         },
 
         success: function (result) {

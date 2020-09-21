@@ -19,11 +19,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $emp_cgc
  * @property string $emp_tel
  * @property string $auth_rest
+ * @property string $password
+ * @property string|null $remember_token
  * @property Carbon $data_cad
  * @property Carbon|null $data_alt
  * @property int $status
  * 
  * @property Collection|Cliempresa[] $cliempresas
+ * @property Collection|Contrato[] $contratos
  * @property Collection|Financeiro[] $financeiros
  *
  * @package App\Models
@@ -44,12 +47,19 @@ class Empresa extends Model
 		'data_alt'
 	];
 
+	protected $hidden = [
+		'password',
+		'remember_token'
+	];
+
 	protected $fillable = [
 		'emp_cod',
 		'razao_social',
 		'emp_cgc',
 		'emp_tel',
 		'auth_rest',
+		'password',
+		'remember_token',
 		'data_cad',
 		'data_alt',
 		'status'
@@ -58,6 +68,11 @@ class Empresa extends Model
 	public function cliempresas()
 	{
 		return $this->hasMany(Cliempresa::class, 'empresa');
+	}
+
+	public function contratos()
+	{
+		return $this->hasMany(Contrato::class, 'emp_cod');
 	}
 
 	public function financeiros()

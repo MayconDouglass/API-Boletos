@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cliempresa;
+use App\Models\Contrato;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 
@@ -55,20 +57,20 @@ class EmpresaAPI extends Controller
 
     public function cgc($cgc)
     {
-        $empresa = Empresa::where('emp_cgc',$cgc)->get();
-
+        $empresa = Empresa::where('emp_cgc',$cgc)->first();
+        
         if(!$empresa)
-            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa com esse ID.'], 404);
+            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa com esse CNPJ.'], 404);
 
         return response()->json($empresa,200);
     }
 
-    public function rest($hash)
+    public function rest($auth_rest)
     {
-        $empresa = Empresa::where('auth_rest',$hash)->get();
+        $empresa = Empresa::where('auth_rest',$auth_rest)->first();
         
         if(!$empresa)
-            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa com esse ID.'], 404);
+            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa localizada.'], 404);
 
         return $empresa;
     }
@@ -80,9 +82,12 @@ class EmpresaAPI extends Controller
         return response()->json($authRest , 200);
     }
     
-    public function update(Request $request, $id)
+    public function update(Request $request, $hash)
     {
-        $empresa = Empresa::findOrFail($id);
+        $empresa = Empresa::where('auth_rest',$hash)->first();
+        if(!$empresa)
+        return response()->json(['code'=>'404','erro'=>'Nenhuma empresa localizada.'], 404);
+
         $empresa->data_alt = date('Y-m-d H:i:s');
         $statusEmp = $empresa->update($request->all());
 
@@ -93,10 +98,12 @@ class EmpresaAPI extends Controller
         }
     }
 
-    
     public function destroy($id)
     {
-        $empresa = Empresa::findOrFail($id);
+        $empresa = Empresa::find($id);
+        if(!$empresa)
+            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa com esse ID.'], 404);
+
         $statusEmp = $empresa->delete();
 
         if($statusEmp){
@@ -104,5 +111,68 @@ class EmpresaAPI extends Controller
         }else{
             return response()->json(['code'=>'400','Response'=>'Bad Request'], 400);
         }
+    }
+
+    public function deleteRel($auth_rest,$id)
+    {
+        $empresa = Empresa::where('auth_rest',$auth_rest)->first();
+        if(!$empresa)
+            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa localizada.'], 404);
+
+        $cliEmp = Cliempresa::where([['empresa',$empresa->id_empresa],['cliente',$id]])->first();
+        if(!$cliEmp)
+            return response()->json(['code'=>'404','erro'=>'Nenhuma cliente localizado.'], 404);
+      
+        $statusEmp = $cliEmp->delete();
+
+        if($statusEmp){
+            return response()->json(['code'=>'200','Response'=>'Empresa excluida do relacionamento'], 200);
+        }else{
+            return response()->json(['code'=>'400','Response'=>'Bad Request'], 400);
+        }
+    }
+
+    public function cliemp($auth_rest)
+    {
+        $empresa = Empresa::where('auth_rest',$auth_rest)->first();
+        if(!$empresa)
+            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa localizada.'], 404);
+
+            $clieEmp = Cliempresa::where('empresa',$empresa->id_empresa)->with(['cliente'])->get('cliente');
+        
+            return response()->json(['Empresa' => $empresa->razao_social,'Clientes' => $clieEmp],200);
+    }
+
+    public function contratoemp($auth_rest)
+    {
+        if($auth_rest == 'current'){
+            $emp = Empresa::where('auth_rest',auth('admin')->user()->auth_rest)->first();
+            if(!$emp)
+            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa localizada.'], 404);
+
+            $contratos = Contrato::where('emp_cod',$emp->id_empresa)
+            ->join('clientes', 'clientes.id_cliente', '=', 'contrato.cli_cod')
+            ->select('clientes.id_cliente','clientes.nome','clientes.cgc','contrato.id_contrato','contrato.numero','contrato.ativo','contrato.data_cad','contrato.data_alt')
+            ->first();
+
+        }else{
+            $emp = Empresa::where('auth_rest',$auth_rest)->first();
+            if(!$emp)
+            return response()->json(['code'=>'404','erro'=>'Nenhuma empresa localizada.'], 404);
+
+            $contratos = Contrato::where('emp_cod',$emp->id_empresa)
+            ->join('clientes', 'clientes.id_cliente', '=', 'contrato.cli_cod')
+            ->select('clientes.id_cliente','clientes.nome','clientes.cgc','contrato.id_contrato','contrato.numero','contrato.ativo','contrato.data_cad','contrato.data_alt')
+            ->first();
+
+        }
+
+        if(!$contratos)
+            return response()->json(['code'=>'404','erro'=>'Nenhum contrato localizado.'], 404);
+
+
+        
+        //return response()->json(['Empresa' => $contratos,'Clientes' => $contratos],200);
+        return response()->json($contratos,200);
     }
 }

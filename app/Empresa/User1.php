@@ -5,7 +5,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements JWTSubject
+class User1 extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -32,9 +32,9 @@ class User extends Authenticatable implements JWTSubject
 		'status'
 	];
 
-	public function cliempresas()
+	public function clifinanceiros()
 	{
-		return $this->hasMany(Cliempresa::class, 'cliente');
+		return $this->hasMany(Clifinanceiro::class, 'cliente');
 	}
 
 	public function contratos()
@@ -42,12 +42,13 @@ class User extends Authenticatable implements JWTSubject
 		return $this->hasMany(Contrato::class, 'cli_cod');
 	}
 
-	public function financeiros()
+	public function boletos()
 	{
 		return $this->hasMany(Financeiro::class, 'cli_cod');
 	}
+    // Rest omitted for brevity
 
-	  /**
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed

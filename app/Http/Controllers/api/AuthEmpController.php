@@ -5,11 +5,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 
-class AuthController extends Controller
+class AuthEmpController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:admin', ['except' => ['login']]);
     }
 
     /**
@@ -19,20 +19,21 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only(['cgc', 'password']);
-        
-        if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Não autorizado'], 401);
+        $credentials = $request->only('auth_rest', 'password');
+        //dd(auth('admin')->attempt($credentials));
+        if (!$token = auth('admin')->attempt($credentials)) {
+            return response()->json(['code'=>'401','error' => 'Nao autorizado'], 401);
         }
+        
+        
 
-       
-        if (Auth::user('api')){
-            setcookie('sig2000',$token);
+        if (auth('admin')){
+            
+            //return response()->json(['token'=> $token], 200);
+            setcookie('sig2000teste',$token);
             return view('welcome');
-                      
         }else{
-
-            return view('login');
+            return 'erro';
 
         }
        
@@ -45,7 +46,7 @@ class AuthController extends Controller
      */
     public function me(Request $request)
     {
-        return response()->json(auth('api')->user());
+        return response()->json(auth('admin')->user());
     }
 
     /**
@@ -56,7 +57,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
 
-        auth('api')->logout();
+        auth('admin')->logout();
         
         return response()->json(['message' => 'Saiu com sucesso']);
     }
@@ -68,7 +69,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth('api')->refresh());
+        return $this->respondWithToken(auth('admin')->refresh());
     }
 
     /**
