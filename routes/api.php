@@ -49,8 +49,18 @@ Route::group(['middleware'=>['apiJWT']], function(){
     Route::post('empresas/d/{auth_rest}/{id}', 'api\\EmpresaApi@deleteRel');
 
     Route::get('contratos', 'api\\ContratoApi@index');
-    Route::get('contratos/n/{id}', 'api\\ContratoApi@show');
+    Route::get('contratos/{id}', 'api\\ContratoApi@show');
+    Route::get('contratos/n/{numero}', 'api\\ContratoApi@showNumero');
 
+    Route::post('contratos/i/', 'api\\ContratoApi@store');
+    Route::post('contratos/u/{id}', 'api\\ContratoApi@update');
+    Route::post('contratos/u/numero/{numero}', 'api\\ContratoApi@updateNumero');
+    Route::post('contratos/d/{id}', 'api\\ContratoApi@destroy');
+    Route::post('contratos/d/n/{numero}', 'api\\ContratoApi@destroyAuth');
+
+    Route::get('boletos', 'api\\FinanceiroApi@index');
+    Route::get('boletos/{id}', 'api\\FinanceiroApi@show');
+    Route::get('boletos/n/{numero}', 'api\\FinanceiroApi@showNumero');
 
 
 

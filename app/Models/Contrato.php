@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $emp_cod
  * @property int $cli_cod
  * @property string $numero
+ * @property string|null $path
  * @property int $ativo
  * @property Carbon $data_cad
  * @property Carbon|null $data_alt
@@ -46,6 +47,7 @@ class Contrato extends Model
 		'emp_cod',
 		'cli_cod',
 		'numero',
+		'path',
 		'ativo',
 		'data_cad',
 		'data_alt'

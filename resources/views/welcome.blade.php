@@ -104,7 +104,7 @@
     $.ajax({
         type: 'get',
         dataType: 'json',
-        url: '/api/empresas/rest/generator/117.999.047-17',
+        url: '/api/empresas/rest/generator/'+ '21034355000171',
         headers: {
             'Authorization': 'Bearer' +token2
         },
@@ -123,7 +123,7 @@
     $.ajax({
         type: 'get',
         dataType: 'json',
-        url: '/api/empresas/contratos/',
+        url: '/api/contratos',
         headers: {
             'Authorization': 'Bearer' +token2 
         },

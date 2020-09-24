@@ -71,8 +71,8 @@ class EmpresaAPI extends Controller
         
         if(!$empresa)
             return response()->json(['code'=>'404','erro'=>'Nenhuma empresa localizada.'], 404);
-
-        return $empresa;
+       
+       return $empresa;
     }
 
     public function generate_rest($cgc)
