@@ -123,7 +123,7 @@
     $.ajax({
         type: 'get',
         dataType: 'json',
-        url: '/api/contratos',
+        url: '/api/clientes',
         headers: {
             'Authorization': 'Bearer' +token2 
         },

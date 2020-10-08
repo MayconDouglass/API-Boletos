@@ -27,40 +27,40 @@ Route::group(['middleware'=>['apiJWT']], function(){
     Route::post('auth/emp/refresh', 'api\\AuthEmpController@refresh');
 
 
-    Route::get('clientes', 'api\\ClienteApi@index');
-    Route::get('clientes/{id}', 'api\\ClienteApi@show');
-    Route::get('clientes/cgc/{cgc}', 'api\\ClienteApi@cgc');
+    Route::get('clientes', 'api\\ClienteAPI@index');
+    Route::get('clientes/{id}', 'api\\ClienteAPI@show');
+    Route::get('clientes/cgc/{cgc}', 'api\\ClienteAPI@cgc');
 
-    Route::post('clientes/i/', 'api\\ClienteApi@store');
-    Route::post('clientes/u/{id}', 'api\\ClienteApi@update');
-    Route::post('clientes/d/{id}', 'api\\ClienteApi@destroy');
+    Route::post('clientes/i/', 'api\\ClienteAPI@store');
+    Route::post('clientes/u/{id}', 'api\\ClienteAPI@update');
+    Route::post('clientes/d/{id}', 'api\\ClienteAPI@destroy');
 
-    Route::get('empresas', 'api\\EmpresaApi@index');
-    Route::get('empresas/{id}', 'api\\EmpresaApi@show');
-    Route::get('empresas/cnpj/{cgc}', 'api\\EmpresaApi@cgc');
-    Route::get('empresas/rest/{auth_rest}', 'api\\EmpresaApi@rest');
-    Route::get('empresas/rest/generator/{cgc}', 'api\\EmpresaApi@generate_rest');
-    Route::get('empresas/clientes/{auth_rest}', 'api\\EmpresaApi@cliemp');
-    Route::get('empresas/contratos/{auth_rest}', 'api\\EmpresaApi@contratoemp');
+    Route::get('empresas', 'api\\EmpresaAPI@index');
+    Route::get('empresas/{id}', 'api\\EmpresaAPI@show');
+    Route::get('empresas/cnpj/{cgc}', 'api\\EmpresaAPI@cgc');
+    Route::get('empresas/rest/{auth_rest}', 'api\\EmpresaAPI@rest');
+    Route::get('empresas/rest/generator/{cgc}', 'api\\EmpresaAPI@generate_rest');
+    Route::get('empresas/clientes/{auth_rest}', 'api\\EmpresaAPI@cliemp');
+    Route::get('empresas/contratos/{auth_rest}', 'api\\EmpresaAPI@contratoemp');
     
-    Route::post('empresas/i/', 'api\\EmpresaApi@store');
-    Route::post('empresas/u/{auth_rest}', 'api\\EmpresaApi@update');
-    Route::post('empresas/d/{id}', 'api\\EmpresaApi@destroy');
-    Route::post('empresas/d/{auth_rest}/{id}', 'api\\EmpresaApi@deleteRel');
+    Route::post('empresas/i/', 'api\\EmpresaAPI@store');
+    Route::post('empresas/u/{auth_rest}', 'api\\EmpresaAPI@update');
+    Route::post('empresas/d/{id}', 'api\\EmpresaAPI@destroy');
+    Route::post('empresas/d/{auth_rest}/{id}', 'api\\EmpresaAPI@deleteRel');
 
-    Route::get('contratos', 'api\\ContratoApi@index');
-    Route::get('contratos/{id}', 'api\\ContratoApi@show');
-    Route::get('contratos/n/{numero}', 'api\\ContratoApi@showNumero');
+    Route::get('contratos', 'api\\ContratoAPI@index');
+    Route::get('contratos/{id}', 'api\\ContratoAPI@show');
+    Route::get('contratos/n/{numero}', 'api\\ContratoAPI@showNumero');
 
-    Route::post('contratos/i/', 'api\\ContratoApi@store');
-    Route::post('contratos/u/{id}', 'api\\ContratoApi@update');
-    Route::post('contratos/u/numero/{numero}', 'api\\ContratoApi@updateNumero');
-    Route::post('contratos/d/{id}', 'api\\ContratoApi@destroy');
-    Route::post('contratos/d/n/{numero}', 'api\\ContratoApi@destroyAuth');
+    Route::post('contratos/i/', 'api\\ContratoAPI@store');
+    Route::post('contratos/u/{id}', 'api\\ContratoAPI@update');
+    Route::post('contratos/u/numero/{numero}', 'api\\ContratoAPI@updateNumero');
+    Route::post('contratos/d/{id}', 'api\\ContratoAPI@destroy');
+    Route::post('contratos/d/n/{numero}', 'api\\ContratoAPI@destroyAuth');
 
-    Route::get('boletos', 'api\\FinanceiroApi@index');
-    Route::get('boletos/{id}', 'api\\FinanceiroApi@show');
-    Route::get('boletos/n/{numero}', 'api\\FinanceiroApi@showNumero');
+    Route::get('boletos', 'api\\FinanceiroAPI@index');
+    Route::get('boletos/{id}', 'api\\FinanceiroAPI@show');
+    Route::get('boletos/n/{numero}', 'api\\FinanceiroAPI@showNumero');
 
 
 

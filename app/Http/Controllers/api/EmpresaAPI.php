@@ -15,6 +15,7 @@ class EmpresaAPI extends Controller
     {
       $empresas =json_decode(Empresa::orderBy('id_empresa', 'asc')->get(),true);
 
+       //return response()->json($empresas, 200);
        return response()->json($empresas, 200);
     }
 

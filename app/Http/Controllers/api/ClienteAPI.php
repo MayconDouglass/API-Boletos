@@ -9,8 +9,7 @@ use App\Models\Cliente;
 use App\Models\Empresa;
 
 class ClienteAPI extends Controller
-{
-   
+{  
 
     public function index()
     {
